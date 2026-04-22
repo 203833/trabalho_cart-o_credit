@@ -12,13 +12,7 @@ for arquivo in arquivos:
 
     df = df.rename(columns={'valor (em r$)': 'valor'})
 
-    df['valor'] = (
-        df['valor']
-        .astype(str)
-        .str.replace('.', '', regex=False)
-        .str.replace(',', '.', regex=False)
-        .astype(float)
-    )
+    df['valor'] = df['valor'].astype(float)
 
     df['data de compra'] = pd.to_datetime(
         df['data de compra'], dayfirst=True, errors='coerce'
